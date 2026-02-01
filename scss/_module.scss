@@ -1,0 +1,666 @@
+@use "vars" as *;
+
+
+.inner {
+	display: block;
+	padding: 0 vw(15);
+	margin: 0 auto;
+	@include mq(md-min){
+		max-width: vw(1230);
+	}
+	@include mq(){
+		padding: 0 vwsp(30);
+	}
+	&--1400{
+		@include mq(md-min){
+			max-width: vw(1438);
+		}
+	}
+}
+
+
+
+.js-bar,.slimScrollDiv{
+	height: vw(436) !important;
+	@include mq(){
+		height: auto !important;
+	}
+}
+.js-bar{
+	padding: 0 vw(15) 0 0;
+	@include mq(){
+		padding: 0;
+	}
+}
+.slimScrollBar{
+	display: block !important;
+	background: #3a8c54 !important;
+	opacity: 1 !important;
+}
+.slimScrollRail {
+	background: #cbd1d3 !important;
+	opacity: 1 !important;
+	display: block !important;
+}
+
+.form-control{
+	display: block;
+	width: 100%;
+	height: 45px;
+	background: white;
+	border: 1px solid #ccc;
+	font-weight: 500;
+	padding: 5px 10px;
+	@include font-size(20);
+	border-radius: 10px;
+	&:focus{
+		border-color: #66afe9;
+		outline: 0;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	}
+	&::-webkit-input-placeholder {
+		color: #6c6c6c;
+	}
+	&:-moz-placeholder {
+		color: #6c6c6c;
+	}
+	&::-moz-placeholder {
+		color: #6c6c6c;
+	}
+	&:-ms-input-placeholder {
+		color: #6c6c6c;
+	}
+}
+
+.pure-list{
+	@include flex(0,0,wrap);
+	margin-bottom: 35px;
+	@include mq(){
+		margin-bottom: 28px;
+	}
+	li{
+		margin-right: 39px;
+		@include mq(){
+			width: 100%;
+			margin: 0 0 2px;
+		}
+		&:last-child{
+			margin-right: 0;
+		}
+	}
+	&__input{
+		position: relative;
+		input{
+			position: absolute;
+			top:  0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+			opacity: 0;
+			cursor: pointer;
+			&[type="checkbox"]{
+				& + span{
+					&:after{
+						background-color: transparent;
+						top: 23px;
+						left: 5px;
+						width: 17px;
+						height: 10px;
+						border-style: solid;
+						border-color: #39ecaf;
+						border-width: 0 0 4px 4px;
+						-o-border-image: none;
+						border-image: none;
+						-webkit-transform: rotate(-45deg) scale(0);
+						-ms-transform: rotate(-45deg) scale(0);
+						transform: rotate(-45deg) scale(0);
+					}
+				}
+				&:checked{
+					& + span{
+						&:after{
+							content: '';
+							transform: rotate(-45deg) scale(1);
+							transition: transform 200ms ease-out;
+						}
+					}
+				}
+			}
+			&[type="radio"]{
+				+ span{
+					&:after,&:before{
+						border-radius: 50%;
+					}
+				}
+				&:checked{
+					& + span{
+						&:before{
+							animation: borderscale 300ms ease-in;
+						}
+						&:after{
+							transform: scale(1);
+						}
+					}
+				}
+			}
+		}
+		span{
+			display: block;
+			position: relative;
+			padding: 10px 0 10px 40px;
+			vertical-align: middle;
+			user-select: none;
+			cursor: pointer;
+			&:before{
+				content: "";
+				position: absolute;
+				top: 17px;
+				left: 0;
+				width: 31px;
+				height: 31px;
+				background: #3f6558;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+			&:after{
+				content: "";
+				background-color: #718CC7;
+				position: absolute;
+				top: 18px;
+				left: 6px;
+				width: 14px;
+				height: 14px;
+				transform: scale(0);
+				transform-origin: 50%;
+				transition: transform 200ms ease-out, -webkit-transform 200ms ease-out;
+			}
+		}
+	}
+}
+
+
+.pagination{
+	@include flex(center,center,wrap);
+	li{
+		margin: 0 vw(6);
+		@include mq(){
+			margin: 0 vwsp(10);
+		}
+		a{
+			@include flex(center,center,wwrap);
+			width: vw(37);
+			height: vw(37);
+			font-size: vw(20);
+			font-weight: bold;
+			line-height: 1;
+			text-align: center;
+			border: 1px solid #8b211f;
+			color: #8b211f;
+			@include mq(){
+				width: vwsp(37);
+				height: vwsp(37);
+				font-size: vwsp(20);
+			}
+			&.disabled{
+				pointer-events: none;
+				background: #bdd1c8;
+			}
+			&.active,&:hover{
+				background: #8b211f;
+				color: white;
+				opacity: 1;
+			}
+		}
+		.pagination-prev__all,.pagination-next__all{
+			width: vw(77);
+			@include mq(){
+				width: vwsp(77);
+			}
+		}
+		.pagination-next__all,.pagination-next__page{
+			background: #8b211f;
+		}
+		.pagination-prev__all,.pagination-next__all,
+		.pagination-prev__page,.pagination-next__page{
+			border: none;
+		}
+		.pagination-prev__page{
+			@include mq(){
+				margin-right: vwsp(50);
+			}
+		}
+		.pagination-next__page{
+			@include mq(){
+				margin-left: vwsp(50);
+			}
+		}
+		img{
+			display: block;
+			margin: 0 auto;
+			height: vw(29);
+		}
+	}
+}
+
+
+
+
+.popup {
+	position: fixed;
+	@include flex(center, center);
+	width: 100vw;
+	height: 100dvh;
+	background: rgba(0, 0, 0, 0.59);
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: -1;
+	pointer-events: none;
+	transition: 0.8s ease;
+	&.on {
+		opacity: 1;
+		z-index: 999999;
+		pointer-events: auto;
+	}
+	&-wrap {
+		width: 100%;
+		height: 80vh;
+		padding: 0 33px;
+		position: relative;
+		@include mq {
+			height: calc(100dvh - 100px);
+			padding: 0 20px;
+			display: flex;
+			flex-direction: column;
+		}
+		&__close {
+			position: absolute;
+			top: 0;
+			right: vw(30);
+			width: vw(100);
+			height: vw(100);
+			cursor: pointer;
+			transition: 0.3s ease;
+			z-index: 2;
+			background: url(../img/btn-close.png) no-repeat center/100%;
+			@include mq{
+				width: vwsp(50);
+				height: vwsp(50);
+				transform: translateY(-50%);
+				right: 0;
+			}
+		}
+	}
+}
+
+
+#modal-01{
+	.popup-wrap{
+		background: url(../img/khung-modal-01.png) no-repeat center/100% 100%;
+		width: 63vw;
+		height: auto;
+		aspect-ratio: 2533/1796;
+		@include mq{
+			background: url(../img/khung-modal-to.png) no-repeat center/100% 100%;
+			width: 70%;
+			aspect-ratio: 740/1221;
+		}
+		&__ttl{
+			width: 63%;
+			margin: vw(30) auto 0;
+			position: relative;
+			left: -2vw;
+			@include mq{
+				width: 95%;
+				margin: 3.5625vw auto 0;
+				left: -1.5vw;
+			}
+		}
+		&__content{
+			&-main{
+				font-size: vw(22);
+				line-height: 1.2;
+				margin: 0 auto;
+				position: relative;
+				left: -3vw;
+				overflow-y: scroll;
+				padding: 0 7% 0 10%;
+				@include mq(md-min){
+					height: 31vw;
+				}
+				@include mq{
+					font-size: vwsp(22);
+					height: 67vh;
+				}
+				&::-webkit-scrollbar {
+					height: 10px;
+					width: 6px;
+				}
+			
+				&::-webkit-scrollbar-track {
+					background-color: #C4AF66;
+				}
+			
+				&::-webkit-scrollbar-track:hover {
+					background-color: #B8C0C2;
+				}
+			
+				&::-webkit-scrollbar-track:active {
+					background-color: #B8C0C2;
+				}
+			
+				&::-webkit-scrollbar-thumb {
+					border-radius: 15px;
+					background-color: #386F5C;
+				}
+			
+				&::-webkit-scrollbar-thumb:hover {
+					background-color: #386F5C;
+				}
+			
+				&::-webkit-scrollbar-thumb:active {
+					background-color: #C4AF66;
+				}
+			}
+		}
+	}
+}
+
+#modal-02{
+	.popup-wrap{
+		background: url(../img/khung-modal-02.png) no-repeat center/100% 100%;
+		width: 46.5vw;
+		height: auto;
+		aspect-ratio: 1739/1864;
+		@include mq{
+			width: 83%;
+			left: 4vw;
+		}
+		.popup-wrap__close{
+			@include mq{
+				right: vwsp(52);
+				top: vwsp(15);
+			}
+		}
+		&__ttl{
+			width: 92%;
+			margin: vw(40) auto 0;
+			position: relative;
+			left: -2vw;
+			@include mq{
+				margin-top: vwsp(40);
+				left: -3vw;
+			}
+		}
+		&__content{
+			&-main{
+				font-size: vw(22);
+				line-height: 1.2;
+				margin: 0 auto;
+				position: relative;
+				left: -2vw;
+				height: 35vw;
+				overflow-y: scroll;
+				padding: 0 5%;
+				@include mq{
+					font-size: vwsp(20);
+					left: -3.5vw;
+				}
+			}
+		}
+	}
+}
+
+.list-nhiemvu{
+	li{
+		background: url(../img/item-nhiemvu.png) no-repeat center/100% 100%;
+		height: vw(145);
+		position: relative;
+		@include flex(between, center);
+		padding: 0 vw(40) 0 vw(126);
+		margin-bottom: 15px;
+		@include mq{
+			height: vwsp(70);
+		}
+		&:last-of-type{
+			margin-bottom: 0;
+		}
+		
+		@include p-before(vw(87), vw(87)){
+			background: url(../img/ico-nhiemvu.png) no-repeat center/100%;
+			top: 50%;
+			left: vw(18);
+			transform: translateY(-50%);
+		}
+		.title{
+			color: #4c4c4c;
+			font-size: vw(25);
+			@include mq{
+				font-size: vwsp(22);
+			}
+			>span{
+				font-size: vw(28);
+				color: #295951;
+				font-weight: 700;
+				letter-spacing: 0.05em;
+				@include mq{
+					font-size: vwsp(25);
+				}
+			}
+		}
+		.qty{
+			font-size: vw(40);
+			font-weight: 900;
+			@include mq{
+				font-size: vwsp(35);
+			}
+			span{
+				color: #2fcc5f;
+			}
+		}
+	}
+}
+
+
+#modal-03{
+	.popup-wrap{
+		background: url(../img/khung-modal-03.png) no-repeat center/100% 100%;
+		width: 46.5vw;
+		height: auto;
+		aspect-ratio: 1739/1418;
+		@include mq{
+			width: 83%;
+			left: 4vw;
+		}
+		.popup-wrap__close{
+			@include mq{
+				right: vwsp(52);
+				top: vwsp(15);
+			}
+		}
+		&__ttl{
+			width: 92%;
+			margin: vw(50) auto 0;
+			position: relative;
+			left: -2vw;
+			@include mq{
+				margin-top: vwsp(30);
+				left: -3vw;
+			}
+		}
+		&__content{
+			&-main{
+				font-size: vw(35);
+				line-height: 1.2;
+				margin: 0 auto;
+				position: relative;
+				left: -2vw;
+				text-align: center;
+				@include mq{
+					font-size: vwsp(25);
+					left: -4vw;
+				}
+			}
+			.txt-chucmung{
+				font-weight: 700;
+				color: #295951;
+			}
+			.img-gift{
+				width: vw(160);
+				margin: vw(60) auto 5px;
+				@include mq{
+					width: vwsp(160);
+				}
+			}
+			.txt-gift-name{
+				font-weight: 500;
+				color: #c4482e;
+			}
+		}
+	}
+}
+
+
+#modal-04{
+	.popup-wrap{
+		background: url(../img/khung-modal-04.png) no-repeat center/100% 100%;
+		width: 46.5vw;
+		height: auto;
+		aspect-ratio: 1739/1864;
+		@include mq{
+			width: 83%;
+			left: 4vw;
+		}
+		.popup-wrap__close{
+			@include mq{
+				right: vwsp(52);
+				top: vwsp(15);
+			}
+		}
+		&__ttl{
+			width: 92%;
+			margin: vw(30) auto 0;
+			position: relative;
+			left: -2vw;
+			@include mq{
+				margin-top: vwsp(40);
+				left: -3vw;
+			}
+		}
+		&__content{
+			&-main{
+				margin: 0 auto;
+				position: relative;
+				left: -2vw;
+				padding: 0 8%;
+				@include mq{
+					left: -3.5vw;
+				}
+			}
+		}
+	}
+}
+
+#modal-05{
+	.popup-wrap{
+		background: url(../img/khung-modal-05.png) no-repeat center/100% 100%;
+		width: 46.5vw;
+		height: auto;
+		aspect-ratio: 1739/1418;
+		@include mq{
+			width: 83%;
+			left: 4vw;
+		}
+		.popup-wrap__close{
+			@include mq{
+				right: vwsp(52);
+				top: vwsp(15);
+			}
+		}
+		&__ttl{
+			width: 92%;
+			margin: vw(30) auto 0;
+			position: relative;
+			left: -2vw;
+			@include mq{
+				margin-top: vwsp(40);
+				left: -3vw;
+			}
+		}
+		&__content{
+			&-main{
+				text-align: center;
+				font-size: vw(30);
+				color: #295951;
+				font-weight: 700;
+				margin: 0 auto;
+				position: relative;
+				left: -2vw;
+				padding: vw(94) 8%;
+				@include mq{
+					font-size: vwsp(25);
+					left: -3.5vw;
+				}
+			}
+		}
+	}
+}
+
+.login-form{
+	padding: vw(100) 0;
+}
+
+.form-group{
+	margin-bottom: vw(35);
+	&:last-child{
+		margin-bottom: 0;
+	}
+	input{
+		width: 100%;
+		background: #fff;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		height: vw(90);
+		outline: 0;
+		padding: 0 vw(26);
+		font-size: vw(30);
+		@include mq{
+			height: vwsp(50);
+			font-size: vwsp(20);
+		}
+	}
+}
+
+.btn-submit{
+	width: 100%;
+	height: vw(93);
+	@include flex(center, center);
+	color: #fff;
+	background: #2fcc5f;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+	font-size: vw(40);
+	font-weight: 600;
+	margin-top: vw(90);
+	margin-bottom: vw(40);
+	@include mq{
+		font-size: vwsp(25);
+		margin-top: vwsp(40);
+		margin-bottom: vwsp(40);
+		height: vwsp(60);
+	}
+}
+
+.form-other{
+	@include flex(between, center);
+	a{
+		color: #808080;
+		font-size: vw(25);
+		@include mq{
+			font-size: vwsp(20);
+		}
+	}
+}
