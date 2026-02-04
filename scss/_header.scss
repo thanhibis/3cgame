@@ -239,6 +239,7 @@
 	right: 0;
 	width: vw(255);
 	@include smooth-transition;
+	z-index: 100;
 	@include mq(){
 		top: auto;
 		bottom:  vw(20);
