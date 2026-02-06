@@ -46,7 +46,7 @@
 	z-index: 2;
 	@include mq{
 		padding: 0 8%;
-		bottom: vwsp(140);
+		bottom: 35vw;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
