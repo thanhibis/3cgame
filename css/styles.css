@@ -2763,8 +2763,7 @@ Component
 }
 @media screen and (max-width: 768px) {
   .mv-nav__item:nth-child(2) {
-    bottom: -8px;
-    left: 30px;
+    left: 3vw;
   }
 }
 .mv-nav__item:nth-child(3) {
@@ -2772,8 +2771,8 @@ Component
 }
 @media screen and (max-width: 768px) {
   .mv-nav__item:nth-child(3) {
-    bottom: -9px;
-    right: -45px;
+    bottom: -1vw;
+    right: -7vw;
   }
 }
 .mv-nav__item:nth-child(4) {
@@ -2785,8 +2784,8 @@ Component
   }
 }
 .mv-nav__item:nth-child(5) {
-  right: -23px;
-  bottom: 8px;
+  right: -4vw;
+  bottom: 0;
 }
 @media (any-hover: hover) {
   .mv-nav__item:hover {
@@ -2956,7 +2955,8 @@ Component
   }
 }
 .locxuan-content__day-item img {
-  width: 60%;
+  width: 60% !important;
+  height: auto !important;
 }
 .locxuan-content__day-list {
   display: -webkit-box;

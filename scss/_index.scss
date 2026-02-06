@@ -71,15 +71,14 @@
 		&:nth-child(2){
 			bottom: -2vw;
 			@include mq{
-				bottom: -8px;
-				left: 30px;
+				left: 3vw;
 			}
 		}
 		&:nth-child(3){
 			bottom: 5vw;
 			@include mq{
-				bottom: -9px;
-				right: -45px;
+				bottom: -1vw;
+				right: -7vw;
 			}
 		}
 		&:nth-child(4){
@@ -89,8 +88,8 @@
 			}
 		}
 		&:nth-child(5){
-			right: -23px;
-			bottom: 8px;
+			right: -4vw;
+			bottom: 0;
 		}
 		@include hover{
 			z-index: 10;
@@ -238,7 +237,8 @@
 				}
 			}
 			img{
-				width: 60%;
+				width: 60% !important;
+				height: auto !important;
 			}
 		}
 		&-list{
